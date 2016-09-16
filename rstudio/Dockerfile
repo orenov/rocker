@@ -25,6 +25,8 @@ RUN rm -rf /var/lib/apt/lists/ \
     libssl-dev \
     psmisc \
     python-setuptools \
+    python \
+    python-pip \
     sudo \
   && VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
   && wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb \
@@ -69,6 +71,9 @@ COPY run.sh /etc/services.d/rstudio/run
 
 COPY add-students.sh /usr/local/bin/add-students
 EXPOSE 8787
+
+RUN pip install setuptools
+RUN pip install awscli
 
 ## Expose a default volume for Kitematic
 VOLUME /home/rstudio
