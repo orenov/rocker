@@ -68,6 +68,7 @@ RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/downloa
 COPY userconf.sh /etc/cont-init.d/conf
 COPY run.sh /etc/services.d/rstudio/run
 
+RUN apt-get install libpq-dev
 
 COPY add-students.sh /usr/local/bin/add-students
 EXPOSE 8787
