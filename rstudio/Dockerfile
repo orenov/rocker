@@ -68,6 +68,8 @@ RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/downloa
 COPY userconf.sh /etc/cont-init.d/conf
 COPY run.sh /etc/services.d/rstudio/run
 
+RUN apt-get install -y libcurl4-gnutls-dev
+RUN apt-get install -y libssl-dev
 RUN apt-get install -y libpq-dev
 
 COPY add-students.sh /usr/local/bin/add-students
