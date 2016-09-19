@@ -41,8 +41,7 @@ RUN rm -rf /var/lib/apt/lists/ \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/
 
-RUN apt-get build-dep build-essential
-RUN apt-get install -y --force-yes libpq-dev
+#RUN apt-get build-dep build-essential
 
 ## Ensure that if both httr and httpuv are installed downstream, oauth 2.0 flows still work correctly.
 RUN echo '\n\
@@ -75,6 +74,9 @@ EXPOSE 8787
 
 RUN pip install setuptools
 RUN pip install awscli
+
+RUN apt-get update
+RUN apt-get install -y  libpq-dev
 
 ## Expose a default volume for Kitematic
 VOLUME /home/rstudio
