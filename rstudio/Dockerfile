@@ -41,9 +41,9 @@ RUN rm -rf /var/lib/apt/lists/ \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/
 
-RUN apt-get install -y libcurl4-gnutls-dev
-RUN apt-get install -y libssl-dev
-RUN apt-get install -y libpq-dev
+#RUN apt-get install -y libcurl4-gnutls-dev
+#RUN apt-get install -y libssl-dev
+#RUN apt-get install -y libpq-dev
 
 ## Ensure that if both httr and httpuv are installed downstream, oauth 2.0 flows still work correctly.
 RUN echo '\n\
@@ -72,7 +72,6 @@ RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/downloa
 COPY userconf.sh /etc/cont-init.d/conf
 COPY run.sh /etc/services.d/rstudio/run
 
-COPY add-students.sh /usr/local/bin/add-students
 EXPOSE 8787
 
 RUN pip install setuptools
