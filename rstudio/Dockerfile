@@ -41,9 +41,8 @@ RUN rm -rf /var/lib/apt/lists/ \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/
 
-#RUN apt-get install -y libcurl4-gnutls-dev
-#RUN apt-get install -y libssl-dev
-#RUN apt-get install -y libpq-dev
+RUN apt-get build-dep build-essential
+RUN apt-get install -y --force-yes libpq-dev
 
 ## Ensure that if both httr and httpuv are installed downstream, oauth 2.0 flows still work correctly.
 RUN echo '\n\
