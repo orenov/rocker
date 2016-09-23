@@ -77,6 +77,7 @@ RUN pip install awscli
 
 RUN apt-get update
 RUN apt-get install -y  libpq-dev
+RUN apt-get install htop
 
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
 RUN Rscript -e 'install.packages("devtools", repos="http://cran.us.r-project.org")'
